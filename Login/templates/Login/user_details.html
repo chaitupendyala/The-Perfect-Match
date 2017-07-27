@@ -1,0 +1,28 @@
+{% extends "Login/base.html" %}
+{% block title %}{{user_det.basic_details.username}}{% endblock %}
+{% block body %}
+  <div class="container">
+    <div class="row">
+          <div class="profile-header-container">
+            <div class="profile-header-img" style="margin-left:44%;margin-top:50px">
+                    <img class="img-circle" src="{{user_det.profile_picture.url}}" style="margin-top:10px;height:200px"/>
+                    <!-- badge -->
+                    <div class="rank-label-container">
+                        <span class="label label-default rank-label">{{user_det.basic_details.first_name}} {{user_det.basic_details.last_name}}</span>
+                    </div>
+            </div>
+            <div style="margin-top20px">
+              <h3 style="text-align:center">{{user_det.basic_details.email}}</h3>
+              <h3 style="text-align:center">{{user_det.mobile_number}}</h3>
+            </div>
+            <div style="margin-top20px;background-color:orange;margin-left:25%;margin-right:25%">
+              <h1 style="text-align:center">Matches Preferences</h1>
+              <h3 style="text-align:center">Likes Pets:{{ question_responses.question1 }}</h3>
+              <h3 style="text-align:center">Loves Reading Books:{{ question_responses.question2 }}</h3>
+              <h3 style="text-align:center">Smoking and drinking:{{ question_responses.question3 }}</h3>
+              <h3 style="text-align:center">Loves to party:{{ question_responses.question4 }}</h3>
+              <h3 style="text-align:center">Loves Travelling:{{ question_responses.question5 }}</h3>
+            </div>
+    </div>
+  </div>
+{% endblock %}

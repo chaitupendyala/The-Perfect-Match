@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{% block title %}Home{% endblock %}</title>
+	{% load staticfiles %}
+	<link rel="shortcut icon" type="image/png" href="{%  static 'favicon.ico' %}"/>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+	<link href='https://fonts.googleapis.com/css?family=Satisfy' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" href="{% static 'music/style.css' %}"/>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+	<script src="{% static 'music/js/main.js' %}"></script>
+</head>
+<body>
+	<nav class="navbar navbar-inverse" style="background-color:#FF6600;margin-bottom: 0px;opacity:.8">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#topNavBar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<img src="{{ user_details.profile_picture.url }}" alt="profile picture" width="40px" class="img-circle" style="margin-top:5px">
+			<a class="navbar-brand" href="{% url 'Login:Login' %}" style="color:#fff;font-family:serif!important">{{ user.username }}</a>
+		</div>
+		<div class="collapse navbar-collapse" id="topNavBar">
+			<ul class="nav navbar-nav" style="margin-left:20px">
+				<li class="">
+					<a href="/Most_Compatible" style="color:#fff">
+						<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>&nbsp;
+						Most Compatible
+					</a>
+				</li>
+			</ul>
+			<form class="navbar-form navbar-left" method="post" action="/user_det" style="margin-left:50px">
+				<div class="form-group">
+					<input type="text" class="form-control" name="q" placeholder="Search USERNAME">
+				</div>
+				<button type="submit" class="btn btn-default">Search</button>
+			</form>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="">
+					<a href="#" style="color:#fff">
+						<span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>&nbsp;
+						Edit Personal Details
+					</a>
+				</li>
+				<li class="">
+					<a href="{% url 'Login:Logout' %}" style="color:#fff">
+						<span class="glyphicon glyphicon-off" aria-hidden="true"></span>&nbsp;
+						Logout
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</nav>
+{% block body %}
+{% endblock %}
+</body>
+</html>

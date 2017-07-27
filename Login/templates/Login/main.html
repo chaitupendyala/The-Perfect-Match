@@ -1,0 +1,38 @@
+{% extends "Login/base.html" %}
+{% block title %}Home{% endblock %}
+{% block body %}
+<div class="albums-container container-fluid" style="margin-left:20px;margin-right-20px">
+
+  <!-- Albums -->
+  <div class="row">
+      <div class="col-sm-12">
+          <h3 style="text-justify:centre">All Possible Matches</h3>
+      </div>
+      {% for users in all_users %}
+          {% if user_details.premium_user %}
+            <a href="/user_details/{{users.basic_details.username}}">
+              <div class="col-sm-4 col-lg-2">
+                  <div class="thumbnail" style="background-color:#ff9933;opacity:1">
+                      <img src="{{ users.profile_picture.url }}" class="img-circle" style="margin-top:10px;height:200px">
+                      <div class="caption" style="margin-bottom:5px">
+                          <h3>{{ users.basic_details.first_name }} {{ users.basic_details.last_name }}</h3>
+                          <h5>DOB: {{users.date_of_birth}}</h5>
+                      </div>
+                  </div>
+              </div>
+            </a>
+          {% else %}
+            <div class="col-sm-4 col-lg-2">
+                <div class="thumbnail" style="background-color:#ff9933;opacity:1">
+                    <img src="{{ users.profile_picture.url }}" class="img-circle" style="margin-top:10px">
+                    <div class="caption" style="margin-bottom:5px">
+                        <h3>{{ users.basic_details.first_name }} {{ users.basic_details.last_name }}</h3>
+                        <h5>DOB: {{users.date_of_birth}}</h5>
+                    </div>
+                </div>
+            </div>
+          {% endif %}
+      {% endfor %}
+    </div>
+</div>
+{% endblock %}
